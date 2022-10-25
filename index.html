@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Adversarial Amp Modeling Demopage</title>
+    <title>Adversarial Guitar Amplifier Modelling Demopage</title>
     <!-- <link rel="icon" type="image/vnd.microsoft.icon" href="image/favicon.ico"> -->
     <link rel="icon" type="image/vnd.microsoft.icon" href="image/favicon.ico">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -16,7 +16,7 @@
             <table border="0">
                 <tr>
                     <td>
-                        <h1>Adversarial amp modeling</h1>
+                        <h1>Adversarial Guitar Amplifier Modelling</h1>
                         <h2>Audio samples</h2>
                     </td>
                 </tr>
@@ -24,41 +24,36 @@
 
         </header>
 
-        <!-- https://neuraldsp.com -->
 
 
         <div class="visible" id="area2">
 
 
-            <!-- <p>
-                The following audio samples are provided as supplementary material for our paper <br> <b>  End-to-End Amp Modeling: From Data to Controllable Guitar Amplifier Models </b>
+         <p>
+               The following audio samples are provided as supplementary material for our paper <b>Adversarial Guitar Amplifier Modelling</b>.
 			</p>
-    
-            <p>
-                <ul>
-					<li> <b> LSTM </b> is a control-dependent neural network operating directly on audio waveforms.
-						The model adjusts its response to amp knob positions provided as additional inputs, and can generalize to the full range of continous control of unseen positions.
-						We use a 32-cell LSTM network for demonstration purposes, as this configuration is well studied in the literature and known to be real-time feasible.
-					 </li>
-					<li> <b> SPICE </b> is an offline white-box circuit simulation method, based on LTSpice transient analysis. Making this model required careful circuit analysis and component value measurements.
-						Furthermore, the model requires offline rendering and is several orders of magnitude away from real-time operation. </li>
-					<li> <b> Reference </b> is a Matchless DC-30 tube amplifier used as a target device for modeling. 
-						The amplifier has five controls, <em> volume, bass, treble, tone cut, </em> and <em> master volume,</em> all of which must be recreated in an accurate model. </li>
-                </ul>
-            </p>
 
-			<p>
-				Reference recordings were made directly from the amplifier's output using a reactive loadbox. 
-				For consistency, all samples have the same DC-30 cabinet impulse response applied to them. Test samples vary in musical content, and the amplifier controls were adjusted to fit each context. 
-			</p> -->
-
-<br><br>
-<h2>Unpaired data, mapping from an Career SG guitar DI signal to an amped Ibanez 2820 </h2>
-<br>
+         <p>
+            All models operate in an unpaired data scenario, where aligned pairs of input and target waveforms are not available.
+            GAN-based models all share the same time-domain convolutional Generator achitecture, but use various Discriminator architectures.
+            <ul>
+            <li> <b> Target </b> is an Ibanez 2820 guitar played through various guitar amplifier settings.
+               </li>
+            <li> <b> Amp only (oracle) </b> is a Career SG guitar played through the ground truth amplifier model.
+               The amplifier sound is correct, but mismatching guitars contribute to a mismatch in timbre.
+               </li>
+            <li> <b> EQ match + Amp (oracle) </b> applies a linear matching EQ to the Career SG samples before passing them through the ground truth amp model. 
+               In addition to the ground truth amp, this approach requires some knowledge of the reference guitar, which is generally not available.
+               </li>
+            <li> <b> Mel-MS (proposed) </b> uses a multi-resolution mel-spectral discriminator </li>
+            <li> <b> Spec-MS (proposed) </b> uses a multi-resolution linearly spaced spectral discriminator. </li>
+            <li> <b> MelGAN </b> uses a time-domain MelGAN discriminator </li>
+            </ul>
+         </p>
 
 
 <br><br>
-<h2>Clean amp setting</h2>
+<h2>Clean amplifier setting</h2>
 <br>
 
 <table class ="audiotable" border="0" width="100%"><tr class="highlight">
@@ -83,11 +78,11 @@
 </td>
 
 <td class="audio">
-<h3>Plugin only</h3>
+<h3>Amp only</h3>
 </td>
 
 <td class="audio">
-<h3>Plugin + EQ match</h3>
+<h3>EQ match + Amp</h3>
 </td>
 
 </tr><tr class="odd">
@@ -340,7 +335,7 @@
 </table>
 
 <br><br>
-<h2>Crunch amp setting</h2>
+<h2>Crunch amplifier setting</h2>
 <br>
 
 <table class ="audiotable" border="0" width="100%"><tr class="highlight">
@@ -369,7 +364,7 @@
 </td>
 
 <td class="audio">
-<h3>Plugin + EQ match</h3>
+<h3>EQ match + Plugin</h3>
 </td>
 
 </tr><tr class="odd">
@@ -623,7 +618,7 @@
 
 
 <br><br>
-<h2>Heavy distortion amp setting</h2>
+<h2>Heavy distortion amplifier setting</h2>
 <br>
 
 <table class ="audiotable" border="0" width="100%"><tr class="highlight">
@@ -652,7 +647,7 @@
 </td>
 
 <td class="audio">
-<h3>Plugin + EQ match</h3>
+<h3>EQ match + Plugin</h3>
 </td>
 
 </tr><tr class="odd">
